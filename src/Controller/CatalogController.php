@@ -6,13 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends AbstractController
+class CatalogController extends AbstractController
 {
-    #[Route('/test', name: 'app_test')]
+    #[Route('/catalog', name: 'catalog')]
     public function index(): Response
     {
-        return $this->render('test/index.html.twig', [
-            'message' => "hello, world"
-        ]);
+        return $this->render('catalog/index.html.twig');
     }
 }
