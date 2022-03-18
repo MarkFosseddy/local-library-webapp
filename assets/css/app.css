@@ -43,6 +43,30 @@ hr {
     column-gap: 2rem;
 }
 
+.form-control {
+    margin-bottom: 1rem;
+}
+
+.form-submit {
+    padding: .5rem 1rem;
+    color: white;
+    background: cornflowerblue;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-control input {
+    padding: .4rem;
+    width: 100%;
+}
+
+.form-control ul {
+    list-style: none;
+    margin: .5rem;
+    color: indianred;
+}
+
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mt-3 { margin-top: 3rem; }

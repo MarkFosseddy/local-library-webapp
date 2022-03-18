@@ -1,41 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-    .form-control {
-        margin-bottom: 1rem;
-    }
-
-    .form-submit {
-        padding: .5rem 1rem;
-        color: white;
-        background: cornflowerblue;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .form-control input {
-        padding: .4rem;
-        width: 100%;
-    }
-
-    .form-control ul {
-        list-style: none;
-        margin: .5rem;
-        color: indianred;
-    }
-</style>
 <h1 class="mb-1">Update Genre</h1>
-{{ form_start(form) }}
-    <div class="form-control">
-        {{ form_errors(form.name) }}
-        {{
-            form_widget(form.name, {
-                'attr': { 'placeholder': 'Genre name...' }
-            })
-        }}
-    </div>
-    <input class="form-submit" type="submit" value="Submit">
-{{ form_end(form) }}
+{{ include('genre/_form.html.twig') }}
 {% endblock %}
