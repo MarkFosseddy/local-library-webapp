@@ -1,18 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-    ul {
-        list-style: none;
-    }
-
-    ul li:first-child {
-        margin-bottom: .5rem;
-    }
-</style>
 <h1 class="mb-1">Genre: {{ genre.name }}</h1>
 <hr class="mb-1">
-<ul>
+<ul class="genre-delete__actions">
     <li><a href="{{ path('genre_delete', { id: genre.id }) }}">Delete</a></li>
     <li><a href="{{ path('genre_update', { id: genre.id }) }}">Update</a></li>
 </ul>

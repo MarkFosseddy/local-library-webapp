@@ -67,6 +67,14 @@ hr {
     color: indianred;
 }
 
+.genre-delete__actions {
+    list-style: none;
+}
+
+.genre-delete__actions li:first-child {
+    margin-bottom: .5rem;
+}
+
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mt-3 { margin-top: 3rem; }
