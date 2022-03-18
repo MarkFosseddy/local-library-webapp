@@ -67,11 +67,11 @@ hr {
     color: indianred;
 }
 
-.genre-delete__actions {
+.genre__actions {
     list-style: none;
 }
 
-.genre-delete__actions li:first-child {
+.genre__actions li:first-child {
     margin-bottom: .5rem;
 }
 
