@@ -62,9 +62,9 @@ class GenreController extends AbstractController
             throw $this->createNotFoundException('The genre does not exist');
         }
 
-        $manager = $mr->getManager();
-        $manager->remove($genre);
-        $manager->flush();
+        $m = $mr->getManager();
+        $m->remove($genre);
+        $m->flush();
 
         return $this->redirectToRoute('genre_index');
     }
