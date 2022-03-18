@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="mb-1">Genre List</h1>
+
+{% if genres %}
+    <ul class="ml-2">
+        {% for genre in genres %}
+            <li>{{ genre.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no genres.</p>
+{% endif %}
+
+{% endblock %}
