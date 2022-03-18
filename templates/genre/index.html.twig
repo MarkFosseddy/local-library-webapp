@@ -6,7 +6,11 @@
 {% if genres %}
     <ul class="ml-2">
         {% for genre in genres %}
-            <li>{{ genre.name }}</li>
+            <li>
+                <a href="{{ path('genre_show', { id: genre.id }) }}">
+                    {{ genre.name }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% else %}

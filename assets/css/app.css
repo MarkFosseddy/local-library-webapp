@@ -26,7 +26,7 @@ nav ul.nav__actions li:last-child {
     margin-bottom: 0;
 }
 
-nav hr {
+hr {
     border: none;
     border-top: 1px solid lightgray;
 }
