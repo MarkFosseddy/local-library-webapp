@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="mb-1">Author: {{ author.lastName }}, {{ author.firstName }}</h1>
+<p>
+    {{ author.dateOfBirth|date('F jS, Y') }} - {{ author.dateOfDeath|date('F jS, Y') }}
+</p>
+
+<hr class="my-1">
+<ul class="genre__actions">
+    <li>
+        <a href="{{ path('author_delete', { id: author.id }) }}">Delete</a>
+    </li>
+    <li>
+        <a href="{{ path('author_update', { id: author.id }) }}">Update</a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{{ form_start(form) }}
+    <div class="form-control">
+        {{ form_errors(form.first_name) }}
+        {{
+            form_widget(form.first_name, {
+                'attr': { 'placeholder': 'First name...' }
+            })
+        }}
+    </div>
+
+    <div class="form-control">
+        {{ form_errors(form.last_name) }}
+        {{
+            form_widget(form.last_name, {
+                'attr': { 'placeholder': 'Last name...' }
+            })
+        }}
+    </div>
+
+    <div class="form-control">
+        {{ form_errors(form.date_of_birth) }}
+        {{
+            form_widget(form.date_of_birth, {
+                'attr': { 'placeholder': 'Date of birth...' }
+            })
+        }}
+    </div>
+
+    <div class="form-control">
+        {{ form_errors(form.date_of_death) }}
+        {{
+            form_widget(form.date_of_death, {
+                'attr': { 'placeholder': 'Date of death...' }
+            })
+        }}
+    </div>
+
+    <input class="form-submit" type="submit" value="Submit">
+{{ form_end(form) }}

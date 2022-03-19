@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="mb-1">Author List</h1>
+
+{% if authors %}
+    <ul class="ml-2">
+        {% for a in authors %}
+            <li>
+                <a href="{{ path('author_show', { id: a.id }) }}">
+                    {{ a.lastName }}, {{ a.firstName }}
+                </a>
+                ({{ a.dateOfBirth|date('F jS, Y') }} - {{ a.dateOfDeath|date('F jS, Y') }})
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no authors.</p>
+{% endif %}
+{% endblock %}

@@ -32,9 +32,9 @@ class GenreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $genre = $form->getData();
 
-            $manager = $mr->getManager();
-            $manager->persist($genre);
-            $manager->flush();
+            $m = $mr->getManager();
+            $m->persist($genre);
+            $m->flush();
 
             return $this->redirectToRoute('genre_index');
         }
@@ -105,9 +105,7 @@ class GenreController extends AbstractController
             $genre = $form->getData();
             $mr->getManager()->flush();
 
-            return $this->redirectToRoute('genre_show', [
-                'id' => $genre->getId()
-            ]);
+            return $this->redirectToRoute('genre_show', ['id' => $id]);
         }
 
         return $this->renderForm('genre/update.html.twig', ['form' => $form]);
