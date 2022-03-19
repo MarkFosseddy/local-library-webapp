@@ -12,10 +12,12 @@
 
     <p class="mb-1">The library has the following record counts:</p>
     <ul class="ml-2">
-        <li><strong>Books:</strong> 3</li>
-        <li><strong>Copies:</strong> 5</li>
-        <li><strong>Copies available:</strong> 1</li>
-        <li><strong>Authors:</strong> 2</li>
+        <li><strong>Books:</strong> {{ count.books }}</li>
+        <li><strong>Authors:</strong> {{ count.authors }}</li>
+        <li><strong>Genres:</strong> {{ count.genres }}</li>
+
+        {#<li><strong>Copies:</strong> 5</li>
+        <li><strong>Copies available:</strong> 1</li>#}
     </ul>
 </section>
 {% endblock %}
