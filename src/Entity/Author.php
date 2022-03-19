@@ -21,9 +21,8 @@ class Author
     #[Assert\NotBlank]
     private $date_of_birth;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'date', nullable: true)]
     #[Assert\Type('\DateTimeInterface')]
-    #[Assert\NotBlank]
     private $date_of_death;
 
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Book::class)]
@@ -57,18 +56,6 @@ class Author
     public function setDateOfBirth(?\DateTimeInterface $date_of_birth): self
     {
         $this->date_of_birth = $date_of_birth;
-
-        return $this;
-    }
-
-    public function getDateOfDeath(): ?\DateTimeInterface
-    {
-        return $this->date_of_death;
-    }
-
-    public function setDateOfDeath(?\DateTimeInterface $date_of_death): self
-    {
-        $this->date_of_death = $date_of_death;
 
         return $this;
     }
@@ -125,5 +112,35 @@ class Author
         $this->last_name = $last_name;
 
         return $this;
+    }
+
+    public function getDateOfDeath(): ?\DateTimeInterface
+    {
+        return $this->date_of_death;
+    }
+
+    public function setDateOfDeath(?\DateTimeInterface $date_of_death): self
+    {
+        $this->date_of_death = $date_of_death;
+
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return "$this->last_name, $this->first_name";
+    }
+
+    public function getLifetime(): string
+    {
+        $format = 'F jS, Y';
+        $birth = date($format, $this->date_of_birth->getTimestamp());
+
+        if ($this->date_of_death) {
+            $death = date($format, $this->date_of_death->getTimestamp());
+            return "$birth - $death";
+        }
+
+        return $birth;
     }
 }

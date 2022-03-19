@@ -67,11 +67,11 @@ hr {
     color: indianred;
 }
 
-.genre__actions {
+.entity__actions {
     list-style: none;
 }
 
-.genre__actions li:first-child {
+.entity__actions li:first-child {
     margin-bottom: .5rem;
 }
 

@@ -8,9 +8,9 @@
         {% for a in authors %}
             <li>
                 <a href="{{ path('author_show', { id: a.id }) }}">
-                    {{ a.lastName }}, {{ a.firstName }}
+                    {{ a.name }}
                 </a>
-                ({{ a.dateOfBirth|date('F jS, Y') }} - {{ a.dateOfDeath|date('F jS, Y') }})
+                ({{ a.lifetime }})
             </li>
         {% endfor %}
     </ul>
