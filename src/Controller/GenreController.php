@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use App\Entity\Genre;
 use App\Form\GenreType;
@@ -54,7 +55,7 @@ class GenreController extends AbstractController
     }
 
     #[Route('/genre/{id}/delete', name: 'genre_delete')]
-    public function delete(ManagerRegistry $mr, $id): Response
+    public function delete(Request $req, ManagerRegistry $mr, $id): Response
     {
         $genre = $mr->getRepository(Genre::class)->find($id);
 
@@ -62,11 +63,30 @@ class GenreController extends AbstractController
             throw $this->createNotFoundException('The genre does not exist');
         }
 
-        $m = $mr->getManager();
-        $m->remove($genre);
-        $m->flush();
+        $form = $this->createFormBuilder()
+            ->add('id', HiddenType::class, ['data' => $id])
+            ->getForm();
 
-        return $this->redirectToRoute('genre_index');
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $deleteId = $form->get('id')->getData();
+
+            if ($deleteId != $id) {
+                throw $this->createNotFoundException('The genre does not exist');
+            }
+
+            $m = $mr->getManager();
+            $m->remove($genre);
+            $m->flush();
+
+            return $this->redirectToRoute('genre_index');
+        }
+
+        return $this->renderForm('genre/delete.html.twig', [
+            'form' => $form,
+            'genre' => $genre
+        ]);
     }
 
     #[Route('/genre/{id}/update', name: 'genre_update')]
