@@ -6,11 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Doctrine\Persistence\ManagerRegistry;
-
 use App\Entity\Author;
 use App\Form\AuthorFormType;
+use App\Form\DeleteByIdFormType;
 
 #[Route('/catalog')]
 class AuthorController extends AbstractController
@@ -63,9 +62,9 @@ class AuthorController extends AbstractController
             throw $this->createNotFoundException('The author does not exist');
         }
 
-        $form = $this->createFormBuilder()
-            ->add('id', HiddenType::class, ['data' => $id])
-            ->getForm();
+        $form = $this->createForm(DeleteByIdFormType::class, null, [
+            'id' => $id
+        ]);
 
         $form->handleRequest($req);
 
