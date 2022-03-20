@@ -2,9 +2,11 @@
 
 {% block body %}
 <h1 class="mb-1">Author: {{ author.name }}</h1>
-<p>{{ author.lifetime }}</p>
+<p class="mb-1">{{ author.lifetime }}</p>
 
-<hr class="my-1">
+{{ include('book/_preview.html.twig', { books: author.books }) }}
+
+<hr class="mb-1">
 
 <ul class="entity__actions">
     <li>

@@ -2,6 +2,9 @@
 
 {% block body %}
 <h1 class="mb-1">Genre: {{ genre.name }}</h1>
+
+{{ include('book/_preview.html.twig', { books: genre.books }) }}
+
 <hr class="mb-1">
 <ul class="entity__actions">
     <li><a href="{{ path('genre_delete', { id: genre.id }) }}">Delete</a></li>
