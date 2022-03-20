@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class AuthorFormType extends AbstractType
 {
     private $attrs = ['required' => false, 'label' => false];
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
