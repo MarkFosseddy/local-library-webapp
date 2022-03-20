@@ -1,0 +1,19 @@
+<section class="ml-2 mb-1">
+    <h2 class="mb-1">Books</h2>
+    {% if books|length > 0 %}
+        <ul class="no-style">
+            {% for b in books %}
+                <li class="mb-1">
+                    <p>
+                        <a href="{{ path('book_show', { id: b.id }) }}">
+                            {{ b.title }}
+                        </a>
+                    </p>
+                    <p>{{ b.summary }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no books.</p>
+    {% endif %}
+</section>

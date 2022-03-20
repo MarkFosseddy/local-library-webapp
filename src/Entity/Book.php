@@ -6,8 +6,11 @@ use App\Repository\BookRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
+#[UniqueEntity('ISBN')]
 class Book
 {
     #[ORM\Id]
@@ -16,19 +19,27 @@ class Book
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private $summary;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Isbn]
     private $ISBN;
 
     #[ORM\ManyToOne(targetEntity: Author::class, inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private $author;
 
     #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'books')]
+    #[Assert\Count(min: 1)]
     private $genres;
 
     public function __construct()

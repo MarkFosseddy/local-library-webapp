@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="mb-1">Title: {{ book.title }}</h1>
+
+<p class="mb-1">
+    <strong>Author:</strong>
+    <a href="{{ path('author_show', { id: book.author.id }) }}">
+        {{ book.author.name }}
+    </a>
+</p>
+<p class="mb-1"><strong>Summary:</strong> {{ book.summary }}</p>
+<p class="mb-1"><strong>ISBN:</strong> {{ book.ISBN }}</p>
+<p class="mb-1">
+    <strong>Genre:</strong>
+    {% for g in book.genres %}
+        <a href="{{ path('genre_show', { id: g.id }) }}">{{ g.name }}</a>{% if not loop.last %},{% endif %}
+    {% endfor %}
+</p>
+
+<hr class="my-1">
+
+<ul class="entity__actions">
+    <li>
+        <a href="{{ path('book_delete', { id: book.id }) }}">Delete</a>
+    </li>
+    <li>
+        <a href="{{ path('book_update', { id: book.id }) }}">Update</a>
+    </li>
+</ul>
+{% endblock %}

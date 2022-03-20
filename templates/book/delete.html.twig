@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 class="mb-1">Title: {{ book.title }}</h1>
+<p class="mb-1">Do you really want to delete this book?</p>
+
+{{ form_start(form) }}
+    <input class="form-submit" type="submit" value="Delete">
+{{ form_end(form) }}
+{% endblock %}
