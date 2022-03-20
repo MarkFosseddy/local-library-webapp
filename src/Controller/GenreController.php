@@ -30,10 +30,7 @@ class GenreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $genre = $form->getData();
-
-            $m = $mr->getManager();
-            $m->persist($genre);
-            $m->flush();
+            $mr->getRepository(Genre::class)->add($genre);
 
             return $this->redirectToRoute('genre_index');
         }
@@ -75,9 +72,7 @@ class GenreController extends AbstractController
                 throw $this->createNotFoundException('The genre does not exist');
             }
 
-            $m = $mr->getManager();
-            $m->remove($genre);
-            $m->flush();
+            $mr->getRepository(Genre::class)->remove($genre);
 
             return $this->redirectToRoute('genre_index');
         }

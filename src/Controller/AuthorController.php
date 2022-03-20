@@ -29,10 +29,7 @@ class AuthorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $author = $form->getData();
-
-            $m = $mr->getManager();
-            $m->persist($author);
-            $m->flush();
+            $mr->getRepository(Author::class)->add($author);
 
             return $this->redirectToRoute('author_index');
         }
@@ -75,9 +72,7 @@ class AuthorController extends AbstractController
                 throw $this->createNotFoundException('The author does not exist');
             }
 
-            $m = $mr->getManager();
-            $m->remove($author);
-            $m->flush();
+            $mr->getRepository(Author::class)->remove($author);
 
             return $this->redirectToRoute('author_index');
         }
