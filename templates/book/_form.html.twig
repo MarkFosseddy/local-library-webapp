@@ -31,9 +31,16 @@
         }}
     </div>
 
-    <div class="form-control-checkbox">
+    <div class="form-control">
         {{ form_errors(form.genres) }}
-        {{ form_widget(form.genres) }}
+    </div>
+    <div class="form-control-checkbox">
+        {% for g in form.genres %}
+            <div>
+                {{ form_widget(g) }}
+                {{ form_label(g) }}
+            </div>
+        {% endfor %}
     </div>
 
     <input class="form-submit" type="submit" value="Submit">

@@ -5,12 +5,21 @@
     <style>
         .auth-layout {
             padding-top: 2rem;
+            margin: 0 auto;
+            width: 30%;
+            max-width: 500px;
+        }
+
+        @media (max-width: 576px) {
+            .auth-layout {
+                width: 60%;
+            }
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    <main class="auth-layout container">
+    <main class="auth-layout">
         {% block content %}{% endblock %}
     </main>
 {% endblock %}
