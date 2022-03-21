@@ -6,14 +6,19 @@
 
     {{ include('book/_preview.html.twig', { books: author.books }) }}
 
-    <hr class="mb-1">
-
-    <ul class="entity__actions">
-        <li>
-            <a href="{{ path('author_delete', { id: author.id }) }}">Delete</a>
-        </li>
-        <li>
-            <a href="{{ path('author_update', { id: author.id }) }}">Update</a>
-        </li>
-    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <hr class="mb-1">
+        <ul class="entity__actions">
+            <li>
+                <a href="{{ path('author_delete', { id: author.id }) }}">
+                    Delete
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('author_update', { id: author.id }) }}">
+                    Update
+                </a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

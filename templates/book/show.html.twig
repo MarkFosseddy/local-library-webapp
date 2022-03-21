@@ -18,14 +18,15 @@
         {% endfor %}
     </p>
 
-    <hr class="my-1">
-
-    <ul class="entity__actions">
-        <li>
-            <a href="{{ path('book_delete', { id: book.id }) }}">Delete</a>
-        </li>
-        <li>
-            <a href="{{ path('book_update', { id: book.id }) }}">Update</a>
-        </li>
-    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <hr class="my-1">
+        <ul class="entity__actions">
+            <li>
+                <a href="{{ path('book_delete', { id: book.id }) }}">Delete</a>
+            </li>
+            <li>
+                <a href="{{ path('book_update', { id: book.id }) }}">Update</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}
