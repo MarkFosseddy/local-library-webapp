@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .auth-layout {
+            padding-top: 2rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="auth-layout container">
+        {% block content %}{% endblock %}
+    </section>
+{% endblock %}
