@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Genre;
 use App\Entity\Book;
 use App\Entity\Author;
+use App\Entity\User;
 
 class CatalogController extends AbstractController
 {
@@ -19,6 +20,7 @@ class CatalogController extends AbstractController
         $count = [];
 
         $count['books'] = $mr->getRepository(Book::class)->count([]);
+        $count['users'] = $mr->getRepository(User::class)->count([]);
         $count['genres'] = $mr->getRepository(Genre::class)->count([]);
         $count['authors'] = $mr->getRepository(Author::class)->count([]);
 
