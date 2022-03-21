@@ -15,33 +15,35 @@
     <title>{% block title %}Local Library{% endblock %}</title>
 </head>
 <body>
-    <div class="layout container">
-        <nav>
-            <ul class="nav__links">
-                <li><a href="{{ path('catalog_index') }}">Home</a></li>
-                <li><a href="{{ path('book_index') }}">All books</a></li>
-                <li><a href="{{ path('author_index') }}">All authors</a></li>
-                <li><a href="{{ path('genre_index') }}">All genres</a></li>
-            </ul>
+    {% block body %}
+        <div class="layout container">
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="{{ path('catalog_index') }}">Home</a></li>
+                    <li><a href="{{ path('book_index') }}">All books</a></li>
+                    <li><a href="{{ path('author_index') }}">All authors</a></li>
+                    <li><a href="{{ path('genre_index') }}">All genres</a></li>
+                </ul>
 
-            <hr class="my-2">
+                <hr class="my-2">
 
-            <ul class="nav__actions">
-                <li>
-                    <a href="{{ path('genre_create') }}">Create new genre</a>
-                </li>
-                <li>
-                    <a href="{{ path('author_create') }}">Create new author</a>
-                </li>
-                <li>
-                    <a href="{{ path('book_create') }}">Create new book</a>
-                </li>
-            </ul>
-        </nav>
+                <ul class="nav__actions">
+                    <li>
+                        <a href="{{ path('genre_create') }}">Create new genre</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('author_create') }}">Create new author</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('book_create') }}">Create new book</a>
+                    </li>
+                </ul>
+            </nav>
 
-        <main>
-            {% block body %}{% endblock %}
-        </main>
-    </div>
+            <main>
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    {% endblock %}
 </body>
 </html>

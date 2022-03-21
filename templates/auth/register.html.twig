@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1 class="mb-1">Register</h1>
+
+    {{ form_start(form) }}
+        <div class="form-control">
+            {{ form_errors(form.username) }}
+            {{
+                form_widget(form.username, {
+                    'attr': { 'placeholder': 'Username...' }
+                })
+            }}
+        </div>
+
+        <div class="form-control">
+            {{ form_errors(form.password.first) }}
+            {{
+                form_widget(form.password.first, {
+                    'attr': { 'placeholder': 'Password...' }
+                })
+            }}
+        </div>
+
+        <div class="form-control">
+            {{ form_errors(form.password.second) }}
+            {{
+                form_widget(form.password.second, {
+                    'attr': { 'placeholder': 'Repeat passoword...' }
+                })
+            }}
+        </div>
+
+        <input class="form-submit" type="submit" value="Register">
+    {{ form_end(form) }}
+{% endblock %}
