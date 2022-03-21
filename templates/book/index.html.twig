@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<h1 class="mb-1">Book List</h1>
+    <h1 class="mb-1">Book List</h1>
 
-{% if books %}
-    <ul class="ml-2">
-        {% for b in books %}
-            <li>
-                <a href="{{ path('book_show', { id: b.id }) }}">
-                    {{ b.title }}
-                </a>
-                ({{ b.author.name }})
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>There are no books.</p>
-{% endif %}
+    {% if books %}
+        <ul class="ml-2">
+            {% for b in books %}
+                <li>
+                    <a href="{{ path('book_show', { id: b.id }) }}">
+                        {{ b.title }}
+                    </a>
+                    ({{ b.author.name }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no books.</p>
+    {% endif %}
 {% endblock %}

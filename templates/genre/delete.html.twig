@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<h1 class="mb-1">Genre: {{ genre.name }}</h1>
-<p class="mb-1">Do you really want to delete this genre?</p>
+    <h1 class="mb-1">Genre: {{ genre.name }}</h1>
+    <p class="mb-1">Do you really want to delete this genre?</p>
 
-{{ form_start(form) }}
-    <input class="form-submit" type="submit" value="Delete">
-{{ form_end(form) }}
+    {{ form_start(form) }}
+        <input class="form-submit" type="submit" value="Delete">
+    {{ form_end(form) }}
 {% endblock %}

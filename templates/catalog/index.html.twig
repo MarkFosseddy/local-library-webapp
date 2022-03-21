@@ -1,23 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<h1 class="mb-1">Local Library Home</h1>
-<p class="mb-2">
-    Welcome to <em>LocalLibrary</em>, a very basic PHP Symfony website
-    developed as a practice exercise to learn the framework.
-</p>
+    <h1 class="mb-1">Local Library Home</h1>
+    <p class="mb-2">
+        Welcome to <em>LocalLibrary</em>, a very basic PHP Symfony website
+        developed as a practice exercise to learn the framework.
+    </p>
 
-<section>
-    <h2 class="mb-1">Dynamic content</h2>
+    <section>
+        <h2 class="mb-1">Dynamic content</h2>
 
-    <p class="mb-1">The library has the following record counts:</p>
-    <ul class="ml-2">
-        <li><strong>Books:</strong> {{ count.books }}</li>
-        <li><strong>Authors:</strong> {{ count.authors }}</li>
-        <li><strong>Genres:</strong> {{ count.genres }}</li>
-
-        {#<li><strong>Copies:</strong> 5</li>
-        <li><strong>Copies available:</strong> 1</li>#}
-    </ul>
-</section>
+        <p class="mb-1">The library has the following record counts:</p>
+        <ul class="ml-2">
+            <li><strong>Books:</strong> {{ count.books }}</li>
+            <li><strong>Authors:</strong> {{ count.authors }}</li>
+            <li><strong>Genres:</strong> {{ count.genres }}</li>
+            <li><strong>Users:</strong> {{ count.users }}</li>
+        </ul>
+    </section>
 {% endblock %}

@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<h1 class="mb-1">Author: {{ author.name }}</h1>
-<p class="mb-1">{{ author.lifetime }}</p>
+    <h1 class="mb-1">Author: {{ author.name }}</h1>
+    <p class="mb-1">{{ author.lifetime }}</p>
 
-{{ include('book/_preview.html.twig', { books: author.books }) }}
+    {{ include('book/_preview.html.twig', { books: author.books }) }}
 
-<hr class="mb-1">
+    <hr class="mb-1">
 
-<ul class="entity__actions">
-    <li>
-        <a href="{{ path('author_delete', { id: author.id }) }}">Delete</a>
-    </li>
-    <li>
-        <a href="{{ path('author_update', { id: author.id }) }}">Update</a>
-    </li>
-</ul>
+    <ul class="entity__actions">
+        <li>
+            <a href="{{ path('author_delete', { id: author.id }) }}">Delete</a>
+        </li>
+        <li>
+            <a href="{{ path('author_update', { id: author.id }) }}">Update</a>
+        </li>
+    </ul>
 {% endblock %}

@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<h1 class="mb-1">Genre List</h1>
+    <h1 class="mb-1">Genre List</h1>
 
-{% if genres %}
-    <ul class="ml-2">
-        {% for genre in genres %}
-            <li>
-                <a href="{{ path('genre_show', { id: genre.id }) }}">
-                    {{ genre.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>There are no genres.</p>
-{% endif %}
+    {% if genres %}
+        <ul class="ml-2">
+            {% for genre in genres %}
+                <li>
+                    <a href="{{ path('genre_show', { id: genre.id }) }}">
+                        {{ genre.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no genres.</p>
+    {% endif %}
 {% endblock %}
