@@ -1,5 +1,42 @@
 {% extends 'auth/layout.html.twig' %}
 
 {% block content %}
-    <h1>Login Page</h1>
+    <h1 class="mb-1">Login</h1>
+
+    <form method="POST" action="{{ path('login') }}">
+        <div class="form-control">
+            {% if error %}
+                <ul>
+                    <li>{{ error.messageKey }}</li>
+                </ul>
+            {% endif %}
+            <input
+                type="text"
+                name="_username"
+                placeholder="Username..."
+                value="{{ username }}"
+            >
+        </div>
+
+        <div class="form-control">
+            <input type="password" name="_password" placeholder="Password...">
+        </div>
+
+        <input
+            type="hidden"
+            name="_target_path"
+            value="{{ path('catalog_index') }}"
+        >
+
+        <input
+            type="hidden"
+            name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+
+        <div class="login-form-actions">
+            <input class="form-submit mr-2" type="submit" value="Login">
+            <a href="{{ path('register') }}">Register</a>
+        </div>
+    </form>
 {% endblock %}
