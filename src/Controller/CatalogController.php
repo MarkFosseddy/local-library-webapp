@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\Persistence\ManagerRegistry;
 
 use App\Entity\Genre;
@@ -12,6 +13,7 @@ use App\Entity\Book;
 use App\Entity\Author;
 use App\Entity\User;
 
+#[IsGranted('ROLE_USER')]
 class CatalogController extends AbstractController
 {
     #[Route('/catalog', name: 'catalog_index')]

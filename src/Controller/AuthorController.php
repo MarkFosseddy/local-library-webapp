@@ -6,12 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Author;
 use App\Form\AuthorFormType;
 use App\Form\DeleteByIdFormType;
 
 #[Route('/catalog')]
+#[IsGranted('ROLE_USER')]
 class AuthorController extends AbstractController
 {
     #[Route('/author', name: 'author_index')]
@@ -22,6 +24,7 @@ class AuthorController extends AbstractController
     }
 
     #[Route('/author/create', name: 'author_create')]
+    #[IsGranted('ROLE_ADMIN')]
     public function create(Request $req, ManagerRegistry $mr): Response
     {
         $form = $this->createForm(AuthorFormType::class, new Author());
@@ -51,6 +54,7 @@ class AuthorController extends AbstractController
 
 
     #[Route('/author/{id}/delete', name: 'author_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $req, ManagerRegistry $mr, $id): Response
     {
         $author = $mr->getRepository(Author::class)->find($id);
@@ -84,6 +88,7 @@ class AuthorController extends AbstractController
     }
 
     #[Route('/author/{id}/update', name: 'author_update')]
+    #[IsGranted('ROLE_ADMIN')]
     public function update(Request $req, ManagerRegistry $mr, $id): Response
     {
         $author = $mr->getRepository(Author::class)->find($id);

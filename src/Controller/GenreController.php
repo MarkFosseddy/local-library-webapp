@@ -7,12 +7,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Genre;
 use App\Form\GenreType;
 use App\Form\DeleteByIdFormType;
 
 #[Route('/catalog')]
+#[IsGranted('ROLE_USER')]
 class GenreController extends AbstractController
 {
     #[Route('/genre', name: 'genre_index')]
@@ -23,6 +25,7 @@ class GenreController extends AbstractController
     }
 
     #[Route('/genre/create', name: 'genre_create')]
+    #[IsGranted('ROLE_ADMIN')]
     public function create(Request $req, ManagerRegistry $mr): Response
     {
         $form = $this->createForm(GenreType::class, new Genre());
@@ -51,6 +54,7 @@ class GenreController extends AbstractController
     }
 
     #[Route('/genre/{id}/delete', name: 'genre_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $req, ManagerRegistry $mr, $id): Response
     {
         $genre = $mr->getRepository(Genre::class)->find($id);
@@ -84,6 +88,7 @@ class GenreController extends AbstractController
     }
 
     #[Route('/genre/{id}/update', name: 'genre_update')]
+    #[IsGranted('ROLE_ADMIN')]
     public function update(Request $req, ManagerRegistry $mr, $id): Response
     {
         $genre = $mr->getRepository(Genre::class)->find($id);

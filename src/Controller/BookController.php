@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Book;
 use App\Entity\Author;
@@ -14,6 +15,7 @@ use App\Form\BookFormType;
 use App\Form\DeleteByIdFormType;
 
 #[Route('/catalog')]
+#[IsGranted('ROLE_USER')]
 class BookController extends AbstractController
 {
     #[Route('/book', name: 'book_index')]
@@ -24,6 +26,7 @@ class BookController extends AbstractController
     }
 
     #[Route('/book/create', name: 'book_create')]
+    #[IsGranted('ROLE_ADMIN')]
     public function create(Request $req, ManagerRegistry $mr): Response
     {
         $form = $this->createForm(BookFormType::class, new Book());
@@ -54,6 +57,7 @@ class BookController extends AbstractController
 
 
     #[Route('/book/{id}/delete', name: 'book_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $req, ManagerRegistry $mr, $id): Response
     {
         $book = $mr->getRepository(Book::class)->find($id);
@@ -87,6 +91,7 @@ class BookController extends AbstractController
     }
 
     #[Route('/book/{id}/update', name: 'book_update')]
+    #[IsGranted('ROLE_ADMIN')]
     public function update(Request $req, ManagerRegistry $mr, $id): Response
     {
         $book = $mr->getRepository(Book::class)->find($id);
