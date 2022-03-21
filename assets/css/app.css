@@ -86,6 +86,11 @@ hr {
     width: 100%;
 }
 
+.login-form-actions {
+    display: flex;
+    align-items: center;
+}
+
 .form-control textarea {
     height: 5rem;
     resize: none;
